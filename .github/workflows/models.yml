@@ -1,0 +1,24 @@
+name: models
+
+on:
+  push:
+    paths: ["Chapter01/**"]
+
+jobs:
+  convert-and-validate:
+    runs-on: macos-latest          # Apple silicon runner
+    defaults:
+      run:
+        working-directory: Chapter01
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python convert.py --out build
+      - run: pytest -q
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aimodels
+          path: Chapter01/build/
