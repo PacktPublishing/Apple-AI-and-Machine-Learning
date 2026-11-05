@@ -1,0 +1,9 @@
+Model      : ImageClassifier v1.0
+Input      : image   float32 [1, 3, 128, 128]
+             RGB, channels first (NCHW), values between 0 and 1
+             photo resized to 128 x 128 (center crop)
+             mean/std normalization done INSIDE the model
+Output     : logits  float32 [1, 4]   raw scores, apply softmax
+Classes    : 0 = shoe, 1 = bag, 2 = watch, 3 = glasses
+Tolerance  : max absolute difference < 1e-3 in float32, same class
+Owners     : ML team (model, conversion), iOS team (integration)

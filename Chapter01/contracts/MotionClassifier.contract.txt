@@ -1,0 +1,9 @@
+Model      : MotionClassifier v1.0
+Input      : motion  float32 [1, T, 6], T between 1 and 256
+             one row per Core Motion sample, at exactly 50 Hz
+             columns: userAcceleration x, y, z (in g)
+                      rotationRate x, y, z (in rad/s)
+Output     : logits  float32 [1, 4]   raw scores, apply softmax
+Classes    : 0 = resting, 1 = walking, 2 = running, 3 = cycling
+Tolerance  : max absolute difference < 1e-3 in float32, same class
+Owners     : ML team (model, conversion), iOS team (integration)
